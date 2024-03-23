@@ -31,11 +31,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
     private EditText newTaskText;
     private Button saveButton;
     private DatabaseHandler db;
-    private SharedPreferences sharedPreferences;
     private static final String SHARED_PREFS_KEY = "CS20A.DoubleZeroTwo.dablist.sharedPrefs";
     private static final String IS_ANE_KEY = "isAutoNewlineEnabled";
     private boolean getIsAutoNewlineEnabled(Context context) {
-        sharedPreferences = context.getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS_KEY, Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean(IS_ANE_KEY, true); // Default value true if key not found
     }
     private String AutoNewline(String text) {
@@ -59,7 +58,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.new_task, container, false);
-        Objects.requireNonNull(getDialog()).getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        Objects.requireNonNull(Objects.requireNonNull(getDialog()).getWindow()).setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         return view;
     }
 
@@ -81,9 +80,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
             isUpdate = true;
             String task = bundle.getString("task");
             newTaskText.setText(task);
-            newTaskText.setSelection(task.length());
+            newTaskText.setSelection(task != null ? task.length() : 0);
         }
-
         db = new DatabaseHandler(getActivity());
 
         db.openDatabase();
