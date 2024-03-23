@@ -41,7 +41,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
     private String AutoNewline(String text) {
         boolean isAutoNewlineEnabled = getIsAutoNewlineEnabled(requireContext());
         if(isAutoNewlineEnabled) {
-            text = " " + text;
+            text = text.replaceAll(",\\s+", ",");
             text = text.replace(",", "\n");
         }
         return text;
@@ -102,7 +102,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
             @Override
             public void afterTextChanged(Editable s) {
                 String text = s.toString();
-                String filteredText = text.replace("\n", "").replace("\r", "");
+                String filteredText = text.replace("\r", "");
 
                 if (!text.equals(filteredText)) {
                     newTaskText.setText(filteredText);
