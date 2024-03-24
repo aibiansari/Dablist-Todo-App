@@ -13,6 +13,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.PopupMenu;
@@ -52,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
 
         db = new DatabaseHandler(this );
 
@@ -189,7 +193,7 @@ public void checkDel() {
     }
 
     private void showSuggestionsPopup(View anchorView) {
-        if (!db.isTableEmpty()) {
+        if (db.isTableEmpty()) {
             PopupMenu popupMenu = new PopupMenu(MainActivity.this, anchorView);
             List<String> suggestedTasks = db.getSuggestedTasks();
             Collections.reverse(suggestedTasks);
@@ -214,7 +218,7 @@ public void checkDel() {
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.AlertDialogTheme2));
         builder.setTitle("Tasks History");
 
-        if (!db.isTableEmpty()) {
+        if (db.isTableEmpty()) {
             List<String> suggestedTasks = db.getSuggestedTasks();
             Collections.reverse(suggestedTasks);
 
@@ -237,7 +241,7 @@ public void checkDel() {
 
 
     private void ClearTasks(){
-        if (!db.isTableEmpty()){
+        if (db.isTableEmpty()){
             AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.AlertDialogTheme));
             builder.setTitle("Clear All Tasks History?");
             builder.setMessage("Are you sure?");

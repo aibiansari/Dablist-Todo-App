@@ -174,7 +174,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } finally {
             db.endTransaction();
         }
-        return isEmpty;
+        return !isEmpty;
     }
 
         public void closeDB() {
