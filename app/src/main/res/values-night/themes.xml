@@ -18,7 +18,19 @@
         <item name="android:background">@color/shadow</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="fontFamily">@font/bold</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/mainColor</item>
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:colorButtonNormal">@color/mainColor</item>
+    </style>
+
+    <style name="AlertDialogTheme2" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:background">@color/shadow</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="fontFamily">@font/bold</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/mainColor</item>
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>

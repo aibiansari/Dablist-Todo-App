@@ -84,18 +84,18 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             Animation scaleUp = AnimationUtils.loadAnimation(MainActivity.this, R.anim.scale_up_long);
             header.startAnimation(scaleUp);
             PopupMenu popupMenu = new PopupMenu(MainActivity.this, header);
-            popupMenu.getMenu().add(0, 1, 0, "Show Suggestions");
-            popupMenu.getMenu().add(0, 2, 0, "Delete Suggestions");
+            popupMenu.getMenu().add(0, 1, 0, "Show Tasks History");
+            popupMenu.getMenu().add(0, 2, 0, "Clear Tasks History");
             popupMenu.getMenu().add(0, 3, 0, "Turn Sound On/Off");
             popupMenu.getMenu().add(0, 4, 0, isAutoNewlineEnabled ? "Disable AutoNewline" : "Enable AutoNewline");
 
             popupMenu.setOnMenuItemClickListener(item -> {
                 if(item.getItemId() == 1){
-                    showSuggestions(header);
+                    showSuggestionsDialog();
                     return true;
                 }
                 else if(item.getItemId() == 2){
-                    deleteSuggestions();
+                    ClearTasks();
                     return true;
                 }
                 else if(item.getItemId() == 3){
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             Animation scaleUp = AnimationUtils.loadAnimation(MainActivity.this, R.anim.scale_up);
             addButton.startAnimation(scaleUp);
 
-            showSuggestions(addButton);
+            showSuggestionsPopup(addButton);
             return true;
         });
 
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 
             }
             else{
-                Toast.makeText(MainActivity.this, "No Checked Tasks!", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "No Checked Tasks!", Toast.LENGTH_SHORT).show();
                }
 
             });
@@ -188,7 +188,7 @@ public void checkDel() {
         }
     }
 
-    private void showSuggestions(View anchorView) {
+    private void showSuggestionsPopup(View anchorView) {
         if (!db.isTableEmpty()) {
             PopupMenu popupMenu = new PopupMenu(MainActivity.this, anchorView);
             List<String> suggestedTasks = db.getSuggestedTasks();
@@ -210,14 +210,40 @@ public void checkDel() {
         }
     }
 
-    private void deleteSuggestions(){
+    private void showSuggestionsDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.AlertDialogTheme2));
+        builder.setTitle("Tasks History");
+
+        if (!db.isTableEmpty()) {
+            List<String> suggestedTasks = db.getSuggestedTasks();
+            Collections.reverse(suggestedTasks);
+
+            // Convert list of suggestions to array for dialog
+            final CharSequence[] suggestionsArray = suggestedTasks.toArray(new CharSequence[0]);
+
+            builder.setItems(suggestionsArray, (dialog, which) -> {
+                String suggestedTask = suggestionsArray[which].toString();
+                addToList(suggestedTask);
+            });
+
+            builder.setNegativeButton("Close", (dialog, which) -> dialog.dismiss());
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+        } else {
+            Toast.makeText(MainActivity.this, "No Tasks History!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    private void ClearTasks(){
         if (!db.isTableEmpty()){
             AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this, R.style.AlertDialogTheme));
-            builder.setTitle("Delete All Suggestions");
+            builder.setTitle("Clear All Tasks History?");
             builder.setMessage("Are you sure?");
             builder.setPositiveButton("Yes", (dialog, which) -> {
                 db.deleteAllSuggestions();
-                Toast.makeText(MainActivity.this, "Suggestions List Cleared!", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Tasks History Cleared!", Toast.LENGTH_SHORT).show();
             });
 
             builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
@@ -227,7 +253,7 @@ public void checkDel() {
         }
         else
         {
-            Toast.makeText(MainActivity.this, "No Suggestions to delete!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "No Tasks History!", Toast.LENGTH_SHORT).show();
         }
     }
     private void addToList(String suggestedTask) {
