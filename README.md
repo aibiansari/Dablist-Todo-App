@@ -46,6 +46,26 @@ For more detailed instructions on contributing, please refer to the [CONTRIBUTIN
 - **Gradle**: Build automation tool for building, testing, and deploying Android apps.
 
 
+## Features
+
+| Feature                   | Description                                                                                 | Implemented |
+|---------------------------|---------------------------------------------------------------------------------------------|-------------|
+| Add/Delete/Update Task    | Allows users to add, delete, and update tasks in the app.                                    | ✅           |
+| Check/Uncheck Task        | Enables users to mark tasks as completed or incomplete.                                      | ✅           |
+| Swipe Controls            | Swipe gestures for intuitive task management (Delete/Update).                                                | ✅           |
+| Sound Options             | Customize sound settings for task notifications.                                              | ✅           |
+| Tasks History/Suggestions | View task history and receive suggestions based on past activity.                             | ✅           |
+| Auto New line Feature     | Automatically insert new lines when adding tasks.                                             | ✅           |
+| Stay on Lockscreen        | Keep the app visible on the lock screen for quick access.                                     | ✅           |
+| Dablist Header Click      | App Settings Menu displayed by clicking the app header.                                           | ✅           |
+| Bin Click/Hold Functions | Delete checked tasks with a click or hold icon to delete all tasks.                                    | ✅           |
+| Add Button Click/Hold     | Click or hold the add button for quick task creation or to access suggestions.                | ✅           |
+
+
+
+
+
+
 ## Used By
 
 This project is Free and Open-source and can be used by any individual as a daily todo application.
