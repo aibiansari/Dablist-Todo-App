@@ -34,7 +34,7 @@ If you'd like to contribute to the development of this app, you can follow these
 For more detailed instructions on contributing, please refer to the [CONTRIBUTING.md](link-to-CONTRIBUTING.md) file.
 
 ## 🛠 Skills
-<img src="https://skillicons.dev/icons?i=androidstudio,java,sqlite,atom,debian,vscode,figma,svg,git,github" />
+<img src="https://skillicons.dev/icons?i=androidstudio,java,sqlite,atom,maven,debian,vscode,figma,svg,ai,ps,git,github,gradle," />
 
 
 ## Tech Stack
