@@ -10,7 +10,7 @@
 
 ## Installation
 
-To run the app on your Android device, you can download the APK file from the [releases page](link-to-releases-page) and follow these steps:
+To run the app on your Android device, you can download the APK file from the [releases page](https://github.com/aibiansari/Dablist-Todo-App/releases) and follow these steps:
 
 1. Download the APK file to your device.
 2. Enable installation from unknown sources in your device settings (if not already enabled).
@@ -31,8 +31,6 @@ If you'd like to contribute to the development of this app, you can follow these
 4. Wait for Android Studio to import the project and download any necessary dependencies.
 5. Once the project is imported, you can start making changes and contributing to the app.
 
-For more detailed instructions on contributing, please refer to the [CONTRIBUTING.md](link-to-CONTRIBUTING.md) file.
-
 ## 🛠 Skills
 <img src="https://skillicons.dev/icons?i=androidstudio,java,sqlite,atom,maven,debian,vscode,figma,svg,ai,ps,git,github,gradle," />
 
@@ -50,16 +48,16 @@ For more detailed instructions on contributing, please refer to the [CONTRIBUTIN
 
 | Feature                   | Description                                                                                 | Implemented |
 |---------------------------|---------------------------------------------------------------------------------------------|-------------|
-| Add/Delete/Update Task    | Allows users to add, delete, and update tasks in the app.                                    | ✅           |
-| Check/Uncheck Task        | Enables users to mark tasks as completed or incomplete.                                      | ✅           |
-| Swipe Controls            | Swipe gestures for intuitive task management (Delete/Update).                                                | ✅           |
-| Sound Options             | Customize sound settings for task notifications.                                              | ✅           |
-| Tasks History/Suggestions | View task history and receive suggestions based on past activity.                             | ✅           |
-| Auto New line Feature     | Automatically insert new lines when adding tasks.                                             | ✅           |
-| Stay on Lockscreen        | Keep the app visible on the lock screen for quick access.                                     | ✅           |
-| Dablist Header Click      | App Settings Menu displayed by clicking the app header.                                           | ✅           |
-| Bin Click/Hold Functions | Delete checked tasks with a click or hold icon to delete all tasks.                                    | ✅           |
-| Add Button Click/Hold     | Click or hold the add button for quick task creation or to access suggestions.                | ✅           |
+| Add/Delete/Update Task    | Allows users to add, delete, and update tasks in the app.                                   | ✅           |
+| Check/Uncheck Task        | Enables users to mark tasks as completed or incomplete.                                     | ✅           |
+| Swipe Controls            | Swipe gestures for intuitive task management (Delete/Update).                               | ✅           |
+| Sound Options             | Customize sound settings for task notifications.                                            | ✅           |
+| Tasks History/Suggestions | View task history and receive suggestions based on past activity.                           | ✅           |
+| Auto New line Feature     | Automatically insert new lines when adding tasks.                                           | ✅           |
+| Stay on Lockscreen        | Keep the app visible on the lock screen for quick access.                                   | ✅           |
+| Dablist Header Click      | App Settings Menu displayed by clicking the app header.                                     | ✅           |
+| Bin Click/Hold Functions | Delete checked tasks with a click or hold icon to delete all tasks.                          | ✅           |
+| Add Button Click/Hold     | Click or hold the add button for quick task creation or to access suggestions.              | ✅           |
 
 
 
